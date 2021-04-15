@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "858375569700",
+    "firebase_url": "https://event-planner-app-4cc71-default-rtdb.firebaseio.com",
+    "project_id": "event-planner-app-4cc71",
+    "storage_bucket": "event-planner-app-4cc71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858375569700:android:94a9a37a010044952f33b1",
+        "android_client_info": {
+          "package_name": "mobile.event_planner_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858375569700-lj3h9cd7gscjoo8cfp04mrq0lefd5t8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA22LGH9GlsQmv0vyPLj0RvapwBB3tVrIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858375569700-lj3h9cd7gscjoo8cfp04mrq0lefd5t8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
