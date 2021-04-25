@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import mobile.event_planner_app.MainActivity
 import mobile.event_planner_app.R
 
 class NotificationsFragment : Fragment() {
@@ -21,11 +22,17 @@ class NotificationsFragment : Fragment() {
     ): View? {
         notificationsViewModel =
                 ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        if ( (activity as MainActivity).currentUser !== null ){
+            val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+            val textView: TextView = root.findViewById(R.id.text_notifications)
+            notificationsViewModel.setText( (activity as MainActivity).currentUser!!.email )
+            notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+                textView.text = it
+            })
+            return root
+        }else{
+            val root = inflater.inflate(R.layout.fragment_login, container, false)
+            return root
+        }
     }
 }
