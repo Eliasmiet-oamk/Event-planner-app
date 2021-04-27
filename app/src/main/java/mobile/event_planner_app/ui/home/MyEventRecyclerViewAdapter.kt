@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.squareup.picasso.Picasso
 import mobile.event_planner_app.Event
 import mobile.event_planner_app.R
@@ -28,7 +29,7 @@ class MyListRecyclerViewAdapter(
         holder.nameView.text = event.name
         holder.dateView.text = event.date
         holder.descriptionView.text = event.description
-
+        holder.card.tag = event.key
         Picasso.get().load(event.image).into(holder.imageView)
     }
 
@@ -39,6 +40,7 @@ class MyListRecyclerViewAdapter(
         val imageView: ImageView = view.findViewById((R.id.image))
         val dateView: TextView = view.findViewById(R.id.date)
         val nameView: TextView = view.findViewById((R.id.name))
+        val card: CardView = view.findViewById(R.id.card)
 
 
     }
