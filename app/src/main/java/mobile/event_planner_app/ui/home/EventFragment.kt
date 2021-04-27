@@ -3,6 +3,8 @@ package mobile.event_planner_app.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,7 @@ class EventFragment : Fragment() {
     private lateinit var Events: ArrayList<Event>
     private lateinit var rcList: RecyclerView
     private lateinit var database: DatabaseReference
+    private lateinit var adapter: MyListRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -95,14 +98,38 @@ class EventFragment : Fragment() {
 
         rcList = view.findViewById(R.id.list)
         rcList.layoutManager = LinearLayoutManager(context)
-        rcList.adapter = MyListRecyclerViewAdapter(Events)
-
+//        rcList.adapter = MyListRecyclerViewAdapter(Events)
+        adapter = MyListRecyclerViewAdapter(Events)
+        rcList.adapter = adapter
 
         return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_menu,menu)
+        var searchItem = menu.findItem(R.id.action_search)
+        var searchView = searchItem.actionView as SearchView
+
+        searchView.queryHint ="Search for an event.."
+        searchView.isIconifiedByDefault = false
+
+        val magId: Int = resources.getIdentifier("android:id/search_mag_icon", null, null)
+        val magImage: ImageView = searchView!!.findViewById(magId)
+        val searchViewGroup: ViewGroup = magImage.getParent() as ViewGroup
+        searchViewGroup.removeView(magImage)
+
+        val queryTextListener = object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(p0: String?): Boolean {
+                adapter.filter.filter(p0)
+                return true
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+        }
+        searchView.setOnQueryTextListener(queryTextListener)
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
