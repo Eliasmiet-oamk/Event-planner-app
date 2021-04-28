@@ -33,6 +33,7 @@ class MyListRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val event = fullList[position]
         holder.nameView.text = event.name
         holder.dateView.text = event.date
@@ -62,10 +63,9 @@ class MyListRecyclerViewAdapter(
                     var results = ArrayList<Event>()
 
                     for (row in fullList) {
-                        if(row.name.toLowerCase(Locale.ROOT).contains(searchString)) {
+                        if (row.name.toLowerCase(Locale.ROOT).contains(searchString))  {
                             results.add(row)
                         }
-
                     }
                     filteredList = results
                 }
@@ -76,6 +76,7 @@ class MyListRecyclerViewAdapter(
 
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
                 filteredList = p1?.values as ArrayList<Event>
+                notifyDataSetChanged()
             }
         }
     }

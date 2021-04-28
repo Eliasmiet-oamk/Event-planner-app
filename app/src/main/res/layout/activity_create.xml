@@ -10,7 +10,7 @@
         android:id="@+id/createName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
         android:hint="Name of your event"
@@ -23,7 +23,7 @@
         android:id="@+id/createDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="90dp"
         android:ems="10"
         android:inputType="text"
         android:hint="Describe your event"
@@ -34,18 +34,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <EditText
         android:id="@+id/createDate"
         android:layout_width="225dp"
         android:layout_height="46dp"
         android:layout_marginStart="14dp"
-        android:layout_marginBottom="392dp"
-        android:hint="20.1.200"
+        android:layout_marginBottom="316dp"
+        android:hint="20.03.2021"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="parent" />
 
 

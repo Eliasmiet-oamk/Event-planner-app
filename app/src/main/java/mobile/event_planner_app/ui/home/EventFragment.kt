@@ -87,23 +87,19 @@ class EventFragment : Fragment() {
         database.child("Events").addValueEventListener(eventsListener)
     }
 
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_event_list, container, false)
 
-
-
-
         rcList = view.findViewById(R.id.list)
         rcList.layoutManager = LinearLayoutManager(context)
-//        rcList.adapter = MyListRecyclerViewAdapter(Events)
+//        rcList.adapter = MyItemRecyclerViewAdapter(items)
         adapter = MyListRecyclerViewAdapter(Events)
         rcList.adapter = adapter
 
         return view
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.list_menu,menu)
@@ -123,12 +119,25 @@ class EventFragment : Fragment() {
                 adapter.filter.filter(p0)
                 return true
             }
-
+            //
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
             }
         }
         searchView.setOnQueryTextListener(queryTextListener)
+
+        val actionExpandListener = object : MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
+                adapter.filter.filter("")
+                return true
+            }
+
+            override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
+                return true
+            }
+        }
+
+        searchItem.setOnActionExpandListener(actionExpandListener)
 
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -141,7 +150,6 @@ class EventFragment : Fragment() {
         else -> {
             super.onOptionsItemSelected(item)
         }
-
 
     }
 
