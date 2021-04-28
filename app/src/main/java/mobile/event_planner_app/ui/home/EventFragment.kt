@@ -25,7 +25,7 @@ class EventFragment : Fragment() {
     private lateinit var Events: ArrayList<Event>
     private lateinit var rcList: RecyclerView
     private lateinit var database: DatabaseReference
-    private lateinit var adapter: MyListRecyclerViewAdapter
+    private lateinit var adapter: MyEventRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -94,7 +94,7 @@ class EventFragment : Fragment() {
         rcList = view.findViewById(R.id.list)
         rcList.layoutManager = LinearLayoutManager(context)
 //        rcList.adapter = MyItemRecyclerViewAdapter(items)
-        adapter = MyListRecyclerViewAdapter(Events)
+        adapter = MyEventRecyclerViewAdapter(Events)
         rcList.adapter = adapter
 
         return view

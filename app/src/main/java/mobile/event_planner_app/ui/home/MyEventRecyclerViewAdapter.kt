@@ -16,9 +16,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class MyListRecyclerViewAdapter(
+class MyEventRecyclerViewAdapter(
     private val fullList: ArrayList<Event>
-) : RecyclerView.Adapter<MyListRecyclerViewAdapter.ViewHolder>(), Filterable {
+) : RecyclerView.Adapter<MyEventRecyclerViewAdapter.ViewHolder>(),Filterable {
 
     var filteredList = ArrayList<Event>()
 
@@ -71,11 +71,13 @@ class MyListRecyclerViewAdapter(
                 }
                 var filterResults = FilterResults()
                 filterResults.values = filteredList
+                println(filteredList)
                 return filterResults
             }
 
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
                 filteredList = p1?.values as ArrayList<Event>
+                println(filteredList)
                 notifyDataSetChanged()
             }
         }

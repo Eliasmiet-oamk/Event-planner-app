@@ -61,30 +61,25 @@ class Create : AppCompatActivity(){
     override fun  onOptionsItemSelected(item: MenuItem) = when(item.itemId){
         R.id.action_save -> {
 
-      val default_image = "https://firebasestorage.googleapis.com/v0/b/event-planner-app-4cc71.appspot.com/o/monitor.jpg?alt=media&token=1ce434d8-a4b8-4201-8841-a5b1f039c362"
-      val name = edName.text.toString()
-      val description = edDescription.text.toString()
-      val date = edDate.text.toString()
-      val key = database.child("Events").push().key.toString()
-      val event = Event(
-          key,
-          name,
-          default_image,
-          date,
-          description
-      )
-      database.child("Events").child(key).setValue(event)
-      onBackPressed()
-      true
-  } else -> {
-   super.onOptionsItemSelected(item)
+            val default_image = "https://firebasestorage.googleapis.com/v0/b/event-planner-app-4cc71.appspot.com/o/monitor.jpg?alt=media&token=1ce434d8-a4b8-4201-8841-a5b1f039c362"
+            val name = edName.text.toString()
+            val description = edDescription.text.toString()
+            val date = edDate.text.toString()
+            val key = database.child("Events").push().key.toString()
+            val event = Event(
+                    key,
+                    name,
+                    default_image,
+                    date,
+                    description
+            )
+            database.child("Events").child(key).setValue(event)
+            onBackPressed()
+            true
+        } else -> {
+            super.onOptionsItemSelected(item)
         }
     }
 
 }
-
-
-
-
-
 
